@@ -79,7 +79,14 @@ header nav ul li a .fas:hover {
 }
 
 .hero-content {
-    z-index: 1;
+    /* Agrega o modifica estas líneas para arreglar el split: */
+    display: flex;
+    flex-direction: column; /* FUERZA EL APILAMIENTO: Texto arriba, videos abajo */
+    align-items: center; /* Centra todo el contenido */
+    text-align: center;
+    padding: 0 10px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .hero h1 {
@@ -352,13 +359,35 @@ footer a:hover {
 /* Responsividad: En móviles (pantallas pequeñas), los videos van en una sola columna */
 @media (max-width: 768px) {
     .videos-grid {
-        grid-template-columns: 1fr; /* 1 columna en móvil */
-        max-width: 400px; 
-        gap: 20px; /* Mantener un buen espacio en móvil */
+    margin-top: 50px; /* Aumentamos el espacio superior */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en escritorio */
+    gap: 40px; /* Espacio generoso entre videos */
+    max-width: 850px; /* Un buen tamaño para una cuadrícula 2x2 */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
     }
     .video-item {
-        height: 500px; /* Un poco más alto en móvil */
+    height: 480px; /* Hacemos la altura un poco más grande */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Un poco más de sombra */
     }
+    .video-item iframe {
+    width: 100%;
+    height: 100%;
 }
+/* Responsividad: En móviles, los videos van en una sola columna */
+@media (max-width: 768px) {
+    .videos-grid {
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+        max-width: 400px; 
+        gap: 20px; 
     }
+    .video-item {
+        height: 500px; 
 }
+}
+}
+    
