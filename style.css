@@ -21,7 +21,7 @@ header {
 }
 
 header .logo img {
-    height: 70px; /* Tamaño del logo AUMENTADO */
+    height: 150px; /* Tamaño del logo AUMENTADO */
 }
 
 header nav ul {
