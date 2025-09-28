@@ -58,14 +58,19 @@ header nav ul li a .fas:hover {
 
 /* Estilos de la sección principal (hero) */
 .hero {
+    /* CORRECCIÓN: Agregamos padding superior para que el menú no se monte */
+    padding-top: 120px; 
+    padding-bottom: 50px;
+    
     background: url('images/hero-bg.jpg') no-repeat center center/cover;
-    height: 80vh;
+    /* Quitamos el height: 80vh para que el contenido se ajuste automáticamente */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #fff;
     position: relative;
+    background-color: #6c6c6c; /* Color de fondo gris para asegurar la visibilidad */
 }
 
 .hero::before {
@@ -75,18 +80,21 @@ header nav ul li a .fas:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    /* Quitamos el overlay negro para usar el fondo gris más claro */
+    /* background-color: rgba(0, 0, 0, 0.5); */ 
+    z-index: 1;
 }
 
 .hero-content {
-    /* Agrega o modifica estas líneas para arreglar el split: */
+    /* Clave para arreglar la duplicación/split: Apilamiento vertical */
     display: flex;
-    flex-direction: column; /* FUERZA EL APILAMIENTO: Texto arriba, videos abajo */
-    align-items: center; /* Centra todo el contenido */
+    flex-direction: column; 
+    align-items: center; 
     text-align: center;
     padding: 0 10px;
     max-width: 1200px;
     margin: 0 auto;
+    z-index: 2; /* Asegura que el contenido esté sobre el fondo */
 }
 
 .hero h1 {
@@ -97,12 +105,12 @@ header nav ul li a .fas:hover {
 
 .hero p {
     font-size: 1.5rem;
-    color: #fff; /* CAMBIO CLAVE: Color blanco para el texto */
-    margin-bottom: 30px; /* Un poco más de espacio */
+    color: #fff; /* CORRECCIÓN: Color blanco para el texto, ahora visible */
+    margin-bottom: 30px; 
 }
 
 .cta-button {
-    background-color: #FF8C00; /* Naranja vibrante para el botón */
+    background-color: #FF8C00; 
     color: #fff;
     padding: 15px 30px;
     text-decoration: none;
@@ -115,12 +123,31 @@ header nav ul li a .fas:hover {
     background-color: #E67E22;
 }
 
-/* Estilos para el video */
-.hero-video {
-    width: 80%;
-    max-width: 600px;
-    margin-top: 30px;
+/* --- ESTILOS PARA LA DISPOSICIÓN HORIZONTAL DE 4 VIDEOS --- */
+.videos-grid {
+    margin-top: 50px; 
+    display: flex; /* Muestra los items en fila */
+    flex-wrap: wrap; /* Permite que los videos salten de línea en pantallas pequeñas */
+    justify-content: center; /* Centra los videos horizontalmente */
+    gap: 20px; /* Espacio entre los videos */
+    max-width: 1200px; /* Ancho máximo para la fila de videos */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
+}
+
+.video-item {
+    flex: 1 1 200px; /* Permite que cada video ocupe al menos 200px y crezca */
+    max-width: 280px; /* Ancho máximo para cada video en la fila */
+    height: 480px; /* Altura para los Shorts */
+    overflow: hidden;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 100%;
 }
 
 /* Estilos de las secciones generales */
@@ -226,7 +253,7 @@ h2 {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5px; /* Espacio entre el botón de compra y el nuevo */
+    margin-bottom: 5px; 
 }
 
 /* Estilos de la Galería */
@@ -307,7 +334,7 @@ footer {
 }
 
 footer a {
-    color: #FFD700; /* CAMBIO CLAVE: Correo en color dorado */
+    color: #FFD700; /* Correo en color dorado */
     text-decoration: none;
 }
 
@@ -331,62 +358,26 @@ footer a:hover {
     header nav ul li {
         margin: 5px 0;
     }
+    
+    .hero {
+        padding-top: 140px; /* Más espacio en móviles para evitar el montaje */
+    }
 
     .mision-vision {
         flex-direction: column;
-        /* --- ESTILOS PARA LA CUADRÍCULA DE 4 VIDEOS DE YOUTUBE --- */
-/* --- ESTILOS PARA LA CUADRÍCULA/HORIZONTAL DE 4 VIDEOS DE YOUTUBE --- */
-.videos-grid {
-    margin-top: 50px; 
-    display: flex; /* CAMBIO CLAVE: Para que los items se pongan en fila */
-    flex-wrap: wrap; /* Permite que los videos salten de línea en pantallas pequeñas */
-    justify-content: center; /* Centra los videos horizontalmente */
-    gap: 20px; /* Espacio entre los videos */
-    max-width: 1200px; /* Ancho máximo para la fila de videos */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 10px;
-}
-
-.video-item {
-    flex: 1 1 200px; /* CAMBIO CLAVE: Permite que cada video ocupe al menos 200px y crezca */
-    max-width: 280px; /* Ancho máximo para cada video en la fila */
-    height: 480px; /* Altura para los Shorts */
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.video-item iframe {
-    width: 100%;
-    height: 100%;
-}
-
-/* Responsividad: En móviles (pantallas pequeñas), los videos se apilan verticalmente si no hay espacio */
-@media (max-width: 768px) {
+        gap: 20px;
+    }
+    
+    /* Estilos de video para móviles: se apilan verticalmente */
     .videos-grid {
-        flex-direction: column; /* Apila los videos en una columna en móviles */
-        align-items: center; /* Centra los videos apilados */
+        flex-direction: column; 
+        align-items: center; 
         gap: 30px;
     }
     .video-item {
-        max-width: 350px; /* Un ancho más razonable en móviles */
-        height: 550px; /* Altura adaptada para Shorts en móvil */
+        max-width: 350px; 
+        height: 550px; 
     }
-    .video-item iframe {
-    width: 100%;
-    height: 100%;
 }
-/* Responsividad: En móviles, los videos van en una sola columna */
-@media (max-width: 768px) {
-    .videos-grid {
-        grid-template-columns: 1fr; /* 1 columna en móvil */
-        max-width: 400px; 
-        gap: 20px; 
-    }
-    .video-item {
-        height: 500px; 
-}
-}
-}
-    
+
+/* Quitamos estilos duplicados al final del archivo */
