@@ -360,7 +360,12 @@ footer a:hover {
     }
     
     .hero {
-        padding-top: 140px; /* Más espacio en móviles para evitar el montaje */
+    /* CORRECCIÓN CLAVE: Esto empuja el contenido hacia abajo */
+    padding-top: 120px; 
+    padding-bottom: 50px;
+    
+    /* Manten tus otros estilos aquí... */
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;
     }
 
     .mision-vision {
