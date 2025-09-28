@@ -97,6 +97,8 @@ header nav ul li a .fas:hover {
 
 .hero p {
     font-size: 1.5rem;
+    color: #fff; /* CAMBIO CLAVE: Color blanco para el texto */
+    margin-bottom: 30px; /* Un poco más de espacio */
 }
 
 .cta-button {
@@ -333,22 +335,26 @@ footer a:hover {
     .mision-vision {
         flex-direction: column;
         /* --- ESTILOS PARA LA CUADRÍCULA DE 4 VIDEOS DE YOUTUBE --- */
+/* --- ESTILOS PARA LA CUADRÍCULA/HORIZONTAL DE 4 VIDEOS DE YOUTUBE --- */
 .videos-grid {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en escritorio */
-    gap: 30px; /* Aumentamos el espacio entre videos */
-    max-width: 800px; /* Reducimos un poco el ancho máximo */
+    margin-top: 50px; 
+    display: flex; /* CAMBIO CLAVE: Para que los items se pongan en fila */
+    flex-wrap: wrap; /* Permite que los videos salten de línea en pantallas pequeñas */
+    justify-content: center; /* Centra los videos horizontalmente */
+    gap: 20px; /* Espacio entre los videos */
+    max-width: 1200px; /* Ancho máximo para la fila de videos */
     margin-left: auto;
     margin-right: auto;
     padding: 0 10px;
 }
 
 .video-item {
-    height: 450px; /* Aumentamos un poco la altura para los Shorts */
+    flex: 1 1 200px; /* CAMBIO CLAVE: Permite que cada video ocupe al menos 200px y crezca */
+    max-width: 280px; /* Ancho máximo para cada video en la fila */
+    height: 480px; /* Altura para los Shorts */
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .video-item iframe {
@@ -356,23 +362,16 @@ footer a:hover {
     height: 100%;
 }
 
-/* Responsividad: En móviles (pantallas pequeñas), los videos van en una sola columna */
+/* Responsividad: En móviles (pantallas pequeñas), los videos se apilan verticalmente si no hay espacio */
 @media (max-width: 768px) {
     .videos-grid {
-    margin-top: 50px; /* Aumentamos el espacio superior */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en escritorio */
-    gap: 40px; /* Espacio generoso entre videos */
-    max-width: 850px; /* Un buen tamaño para una cuadrícula 2x2 */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 10px;
+        flex-direction: column; /* Apila los videos en una columna en móviles */
+        align-items: center; /* Centra los videos apilados */
+        gap: 30px;
     }
     .video-item {
-    height: 480px; /* Hacemos la altura un poco más grande */
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Un poco más de sombra */
+        max-width: 350px; /* Un ancho más razonable en móviles */
+        height: 550px; /* Altura adaptada para Shorts en móvil */
     }
     .video-item iframe {
     width: 100%;
